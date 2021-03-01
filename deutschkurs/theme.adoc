@@ -1,0 +1,7 @@
+{
+    "id": "deutschkurs",
+    "name": "Deutschkurs theme",
+    "description": "KB4IT theme for Deutschkurs",
+    "version": "0.0.1",
+    "kb4it": "0.7.8"
+}
