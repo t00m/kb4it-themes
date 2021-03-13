@@ -41,7 +41,7 @@
                                     <a class="uk-card uk-card-hover uk-border-rounded uk-link-heading" href="pos.html"><span class="uk-padding-small">Part Of Speech</span></a>
                                 </li>
                                 <li class="uk-link-toggle">
-                                    <a class="uk-card uk-card-hover uk-border-rounded uk-link-heading" href="gramatik.html"><span class="uk-padding-small">Gramatik</span></a>
+                                    <a class="uk-card uk-card-hover uk-border-rounded uk-link-heading" href="grammar.html"><span class="uk-padding-small">Grammar</span></a>
                                 </li>
                             </ul>
                         </div>

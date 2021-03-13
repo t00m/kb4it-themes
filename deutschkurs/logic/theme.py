@@ -72,6 +72,7 @@ class Theme(KB4ITBuilder):
         self.create_page_dictionary()
         self.create_page_topics()
         self.create_page_pos()
+        self.create_page_grammar()
         self.create_page_index()
         self.create_page_about_app()
         self.create_page_about_theme()
@@ -142,7 +143,6 @@ class Theme(KB4ITBuilder):
                 for filename in os.listdir(topicpath):
                     filepath = os.path.join(topicpath, filename)
                     self.log.info("Topic[%s] - File[%s]", topic, filename)
-                    self.log.debug(filepath)
                     text = open(filepath, 'r').read()
                     self.analyze_text(topic, text)
             except NotADirectoryError:
@@ -220,7 +220,7 @@ class Theme(KB4ITBuilder):
 
             if not word.pos_ in ['PUNCT', 'SPACE', 'NUM'] and self.is_word(word.text):
                 key = word.text.lower()
-                self.log.debug("%s -> %s (%s)", key, word.pos_, spacy.explain(word.pos_))
+                # ~ self.log.debug("%s -> %s (%s)", key, word.pos_, spacy.explain(word.pos_))
                 if key not in self.cache['words']:
                     self.cache['words'][key] = {}
                     self.cache['words'][key]['title'] = word.text
@@ -382,7 +382,6 @@ class Theme(KB4ITBuilder):
             var['dictionary'] = dictionary
             var['cache'] = self.cache
             var['letter-active'] = letter
-            self.log.debug(var['dictionary'])
             self.distribute('dictionary-%s' % letter, TPL_DICTIONARY_LETTER.render(var=var))
 
     def create_page_topics(self):
@@ -399,6 +398,11 @@ class Theme(KB4ITBuilder):
         var['pos'] = self.create_tagcloud_from_key('Part Of Speech')
         self.distribute('pos', TPL_POS.render(var=var))
 
+    def create_page_grammar(self):
+        TPL_GRAMMAR = self.template('PAGE_GRAMMAR')
+        var = {}
+        var['title'] = 'Grammar'
+        self.distribute('grammar', TPL_GRAMMAR.render(var=var))
 
     def build_property(self, key, value):
         try:
