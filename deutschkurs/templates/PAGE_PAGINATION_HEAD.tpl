@@ -1,4 +1,4 @@
-= ${var['title']}
+= ${var['title_key']}:  ${var['title_value']}
 
 ++++
         <!-- PAGINATION_HEAD.tpl :: START -->
